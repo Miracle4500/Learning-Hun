@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -329,6 +328,13 @@
         function renderPage(page) {
             const app = document.getElementById('app');
             
+            // Check authentication for protected pages
+            const protectedPages = ['dashboard', 'admin'];
+            if (protectedPages.includes(page) && !is_logged_in()) {
+                navigate('login');
+                return;
+            }
+            
             if (page === 'home') {
                 renderHomePage(app);
             } else if (page === 'login') {
@@ -339,9 +345,15 @@
                 renderDashboardPage(app);
             } else if (page === 'admin' && is_admin()) {
                 renderAdminPage(app);
+            } else if (page === 'logout') {
+                logout();
             } else {
-                // Redirect to login if not authenticated
-                renderRedirectPage(app);
+                // Redirect to login if accessing protected page without authentication
+                if (protectedPages.includes(page)) {
+                    navigate('login');
+                } else {
+                    renderHomePage(app);
+                }
             }
         }
 
@@ -756,20 +768,22 @@
             
             // Add copy button functionality
             setTimeout(() => {
-                document.getElementById('copy-account').addEventListener('click', function() {
-                    const accountNumber = document.getElementById('account-number').textContent;
-                    navigator.clipboard.writeText(accountNumber)
-                        .then(() => {
-                            const originalText = this.textContent;
-                            this.textContent = 'Copied!';
-                            setTimeout(() => {
-                                this.textContent = originalText;
-                            }, 2000);
-                        })
-                        .catch(err => {
-                            console.error('Failed to copy: ', err);
-                        });
-                });
+                if (document.getElementById('copy-account')) {
+                    document.getElementById('copy-account').addEventListener('click', function() {
+                        const accountNumber = document.getElementById('account-number').textContent;
+                        navigator.clipboard.writeText(accountNumber)
+                            .then(() => {
+                                const originalText = this.textContent;
+                                this.textContent = 'Copied!';
+                                setTimeout(() => {
+                                    this.textContent = originalText;
+                                }, 2000);
+                            })
+                            .catch(err => {
+                                console.error('Failed to copy: ', err);
+                            });
+                    });
+                }
             }, 100);
         }
 
@@ -938,22 +952,6 @@
             });
         }
 
-        function renderRedirectPage(app) {
-            app.innerHTML = `
-            <div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-                <div class="text-center">
-                    <div class="mx-auto bg-indigo-600 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-play text-white text-xl"></i>
-                    </div>
-                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Please Login to Continue</h1>
-                    <button onclick="navigate('login')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition">
-                        Go to Login Page
-                    </button>
-                </div>
-            </div>
-            `;
-        }
-
         // Helper functions
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -1089,4 +1087,23 @@
                         </div>
                     </div>
                 </div>
-    
+            `;
+            
+            document.body.appendChild(modal);
+            
+            document.getElementById('close-video').addEventListener('click', function() {
+                document.body.removeChild(modal);
+            });
+        }
+
+        // WhatsApp button
+        document.getElementById('whatsapp-button').addEventListener('click', function() {
+            window.open('https://wa.me/2349076004075', '_blank');
+        });
+
+        // Initialize the app
+        renderPage(currentPage);
+    </script>
+</body>
+</html>
+
