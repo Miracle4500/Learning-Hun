@@ -1,12 +1,4 @@
-# NaijaCodeAcademy - Complete Single-File HTML Solution
 
-Here's a fully functional HTML implementation with all your requested features:
-- Copy button for account number
-- Videos play directly on the website (not YouTube)
-- All features working in a single HTML file
-- Mobile-responsive design
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1097,50 +1089,4 @@ Here's a fully functional HTML implementation with all your requested features:
                         </div>
                     </div>
                 </div>
-            `;
-            
-            document.body.appendChild(modal);
-            
-            document.getElementById('close-video').addEventListener('click', function() {
-                document.body.removeChild(modal);
-            });
-        }
-
-        // WhatsApp button
-        document.getElementById('whatsapp-button').addEventListener('click', function() {
-            window.open('https://wa.me/2349076004075', '_blank');
-        });
-
-        // Initialize the app
-        renderPage(currentPage);
-    </script>
-</body>
-</html>
-```
-
-## Key Features Added
-
-1. **Copy Button for Account Number**
-   - Added a "Copy" button next to the account number in the dashboard
-   - Clicking it copies the account number to clipboard
-   - Visual feedback shows "Copied!" for 2 seconds
-   - Works on both light and dark themes
-
-2. **Videos Play on Website (Not YouTube)**
-   - Replaced YouTube embeds with HTML5 video players
-   - Added proper video container with responsive aspect ratio
-   - Videos now play directly on the website
-   - Uses placeholder videos from free sources (in a real implementation, you'd host your own videos)
-
-3. **Payment Information Section**
-   - Added a dedicated section for payment information
-   - Account details are clearly displayed
-   - The copy button is prominently placed next to the account number
-   - Visual design matches the rest of the interface
-
-4. **Mobile-Optimized Design**
-   - Works perfectly on all device sizes
-   - Proper spacing and responsive layout
-   - Touch-friendly buttons and controls
-
-This implementation is completely self-contained in a single HTML file with no external dependencies beyond what's included. All features work immediately when opened in any modern browser.
+    
