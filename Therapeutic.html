@@ -1,0 +1,376 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joyful Mind — Therapeutic AI Support</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            secondary: '#8B5CF6',
+            accent: '#10B981'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .fi-chat-button {
+      z-index: 1000 !important;
+    }
+    .section {
+      scroll-margin-top: 80px;
+    }
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Flowise Embed Script - Loads the AI Chat -->
+  <script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js";
+    Chatbot.init({
+      chatflowid: "be8cdf54-63d8-4b7f-bb0e-47c116b9c5b5",
+      apiHost: "https://cloud.flowiseai.com",
+      theme: {
+        button: {
+          backgroundColor: "#3B82F6",
+          right: "20px",
+          bottom: "20px",
+          size: "large",
+          iconColor: "white",
+          customIconSrc: ""
+        },
+        chatWindow: {
+          welcomeMessage: "Hello, I'm your therapeutic AI assistant. How can I support your mental wellness today?",
+          backgroundColor: "#ffffff",
+          height: "70vh",
+          width: "400px",
+          fontSize: "16px",
+          poweredByTextColor: "#94A3B8",
+          botMessage: {
+            backgroundColor: "#f1f5f9",
+            textColor: "#0f172a",
+            showAvatar: true,
+            avatarSrc: "https://placehold.co/40x40/3B82F6/white?text=🧠"
+          },
+          userMessage: {
+            backgroundColor: "#3B82F6",
+            textColor: "#ffffff",
+            showAvatar: true,
+            avatarSrc: "https://placehold.co/40x40/94A3B8/white?text=👤"
+          },
+          textInput: {
+            backgroundColor: "#ffffff",
+            textColor: "#000000",
+            sendButtonColor: "#3B82F6",
+            placeholder: "Type your message...",
+            maxChars: 2000,
+            autoFocus: true,
+            sendMessageSound: false
+          }
+        }
+      }
+    });
+  </script>
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+      <div class="flex items-center">
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 w-12 h-12 rounded-xl flex items-center justify-center mr-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-gray-800">Joyful Mind</h1>
+          <p class="text-blue-600 text-sm">Therapeutic AI Support</p>
+        </div>
+      </div>
+      <nav class="flex space-x-6 mt-4 md:mt-0">
+        <a href="#home" class="text-gray-600 hover:text-blue-600 font-medium transition">Home</a>
+        <a href="#approach" class="text-gray-600 hover:text-blue-600 font-medium transition">Approach</a>
+        <a href="#support" class="text-gray-600 hover:text-blue-600 font-medium transition">Support</a>
+        <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium transition">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section id="home" class="section bg-gradient-to-br from-blue-50 to-indigo-50 py-20 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 animate-fade-in">
+          Real Support. Real Time. <span class="text-blue-600">Real AI.</span>
+        </h1>
+        <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.2s">
+          Evidence-based therapeutic guidance — available 24/7, with no judgment, just compassion.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style="animation-delay: 0.4s">
+          <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition shadow-md hover:shadow-lg">
+            📱 Text Us: (202) 618-8678
+          </a>
+          <button id="openChatBtn" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg border-2 border-blue-600 hover:bg-blue-50 transition shadow-md">
+            💬 Open AI Chat
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section id="approach" class="section py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+          <span class="inline-block bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-medium mb-4">Real AI, Not Simulated</span>
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">How It Works</h2>
+          <p class="text-lg text-gray-600">
+            Our AI is powered by <strong>Flowise</strong> — a professional platform that delivers dynamic, context-aware responses — not pre-written scripts.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 hover:shadow-md transition">
+            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-600">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Listens & Understands</h3>
+            <p class="text-gray-600">
+              Interprets your unique situation — tone, context, emotion — and responds accordingly.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 hover:shadow-md transition">
+            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-600">
+                <path d="M4 20h4l10.5-10.5a2.83 2.83 0 1 0-4-4L4 16v4z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Evidence-Based</h3>
+            <p class="text-gray-600">
+              Trained on CBT, mindfulness, DBT, and ACT — real therapeutic frameworks.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 hover:shadow-md transition">
+            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-600">
+                <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">24/7 Availability</h3>
+            <p class="text-gray-600">
+              Whether it’s 3 AM or lunch break — support is always a click away.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support Areas -->
+    <section id="support" class="section py-16 bg-gradient-to-br from-indigo-50 to-blue-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800">Areas We Support</h2>
+          <p class="text-gray-600 mt-4 max-w-2xl mx-auto">The AI is equipped to help with these common concerns:</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
+            <div class="text-3xl mb-3">😰</div>
+            <h3 class="font-semibold">Anxiety & Stress</h3>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
+            <div class="text-3xl mb-3">😔</div>
+            <h3 class="font-semibold">Depression & Mood</h3>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
+            <div class="text-3xl mb-3">💬</div>
+            <h3 class="font-semibold">Relationships</h3>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
+            <div class="text-3xl mb-3">🧘</div>
+            <h3 class="font-semibold">Mindfulness</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-gray-800">Get Support — Your Way</h2>
+          <p class="text-gray-600 mt-4">Choose what feels most comfortable for you.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10">
+          <!-- SMS Card -->
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border-2 border-blue-200">
+            <div class="flex items-start mb-6">
+              <div class="bg-blue-100 p-3 rounded-xl mr-4 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-600">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-gray-800">Text Support (SMS Only)</h3>
+                <p class="text-gray-600">No calls — just supportive texts</p>
+              </div>
+            </div>
+            <div class="text-center">
+              <p class="text-3xl font-bold text-blue-600 mb-2">+1 (202) 618-8678</p>
+              <p class="text-gray-600 mb-4">Available 24/7</p>
+              <a href="sms:+12026188678?body=Hi, I'd like support with..." class="inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-blue-700 transition">
+                📲 Open Messaging App
+              </a>
+              <p class="text-sm text-gray-500 mt-3">📱 Tip: Try texting “Hi, I need help with anxiety”</p>
+            </div>
+          </div>
+
+          <!-- AI Chat Card -->
+          <div class="bg-gradient-to-br from-indigo-500 to-purple-600 p-8 rounded-2xl text-white">
+            <div class="flex items-start mb-6">
+              <div class="bg-white/20 p-3 rounded-xl mr-4 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold">AI Therapeutic Assistant</h3>
+                <p class="opacity-90">Real-time, compassionate support</p>
+              </div>
+            </div>
+            <p class="mb-6">Click the button below to open the chat window — responses are generated live based on your input.</p>
+            
+            <button id="openChatBtn2" class="w-full bg-white text-indigo-700 font-bold py-3 rounded-xl hover:bg-gray-100 transition">
+              💬 Open AI Chat Now
+            </button>
+            
+            <div class="mt-6 bg-white/20 rounded-lg p-4">
+              <p class="font-medium mb-2">Try asking:</p>
+              <ul class="text-sm list-disc pl-5 space-y-1">
+                <li>“How do I calm racing thoughts?”</li>
+                <li>“What’s a CBT exercise for self-criticism?”</li>
+                <li>“I’m overwhelmed — where do I start?”</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">You Deserve Support</h2>
+        <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+          Whether it’s a tough moment or a long-standing challenge — help is here, and it’s just a message away.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="sms:+12026188678" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition inline-flex items-center">
+            📱 Text Us Now
+          </a>
+          <button id="openChatBtn3" class="bg-transparent border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition inline-flex items-center">
+            💬 Chat with AI
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="container mx-auto px-4 text-center">
+      <div class="flex items-center justify-center mb-4">
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 w-10 h-10 rounded-lg flex items-center justify-center mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </div>
+        <span class="text-xl font-bold">Joyful Mind</span>
+      </div>
+      <p class="text-gray-400 max-w-2xl mx-auto">
+        This AI provides supportive, therapeutic conversation but is not a substitute for professional care. For clinical concerns, please consult a licensed mental health provider.
+      </p>
+      <p class="mt-4 text-gray-500 text-sm">
+        © <span id="year">2025</span> Joyful Mind • Powered by Flowise AI
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for interactivity -->
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Open chat programmatically (triggers Flowise button click)
+    function openChat() {
+      // Wait a moment for widget to initialize
+      setTimeout(() => {
+        const chatButton = document.querySelector('.fi-chat-button');
+        if (chatButton) {
+          chatButton.click();
+        } else {
+          alert('AI chat is still loading... Please wait a few seconds and try again.');
+        }
+      }, 500);
+    }
+
+    // Attach to all "Open AI Chat" buttons
+    document.querySelectorAll('#openChatBtn, #openChatBtn2, #openChatBtn3').forEach(btn => {
+      btn.addEventListener('click', openChat);
+    });
+
+    // Fade-in on scroll (simple version)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section, .grid > div').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
