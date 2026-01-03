@@ -3,1258 +3,961 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NaijaCodeAcademy - Learn Web Development</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Capt. Gaby Perez | Military Officer & Information Technologist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Cinzel:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #1e40af; --secondary: #16a34a; --accent: #d97706; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            transition: background-color 0.3s, color 0.3s;
-            background-color: #f8fafc;
-            color: #1e293b;
+        /* ===== Base & Theme ===== */
+        :root {
+            --olive: #4A5D23;
+            --dark-olive: #3B4A1C;
+            --sand: #D9B382;
+            --charcoal: #1C1C1C;
+            --gray: #333333;
+            --light-gray: #E0E0E0;
+            --accent: #8B0000;
+            --accent-dark: #6d0000;
+            --border-radius: 4px;
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .dark body { 
-            background-color: #0f172a; 
-            color: #f1f5f9; 
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .course-card { 
-            transition: all 0.3s ease; 
-            border-radius: 16px; 
-            overflow: hidden; 
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); 
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background-color: var(--charcoal);
+            color: #d1d1d1;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
-        .course-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); 
-        }
-        .video-container { 
-            position: relative; 
-            padding-bottom: 56.25%; 
-            height: 0; 
-            overflow: hidden; 
-            border-radius: 0.5rem; 
-            background: #000; 
-        }
-        .video-container video { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-        }
-        .chat-bubble { 
-            max-width: 80%; 
-            padding: 10px 15px; 
-            border-radius: 18px; 
-            margin: 8px 0; 
-        }
-        .chat-bubble.user { 
-            background-color: #1e40af; 
-            color: white; 
-            border-bottom-right-radius: 5px; 
-            float: right; 
-        }
-        .chat-bubble.ai { 
-            background-color: #e2e8f0; 
-            color: #1e293b; 
-            border-bottom-left-radius: 5px; 
-            float: left; 
-            position: relative; 
-        }
-        .dark .chat-bubble.ai { 
-            background-color: #334155; 
-            color: #f1f5f9; 
-        }
-        .clear-fix { 
-            clear: both; 
-        }
-        .whatsapp-button { 
-            position: fixed; 
-            bottom: 20px; 
-            right: 20px; 
-            z-index: 99; 
-            width: 60px; 
-            height: 60px; 
-            border-radius: 50%; 
-            background-color: #25d366; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-            transition: all 0.3s ease; 
-        }
-        .whatsapp-button:hover { 
-            transform: scale(1.1); 
-        }
-        .modal { 
-            display: none; 
-            position: fixed; 
-            inset: 0; 
-            background-color: rgba(0,0,0,0.5); 
-            z-index: 100; 
-            align-items: center; 
-            justify-content: center; 
-            padding: 20px; 
-        }
-        .dark .modal { 
-            background-color: rgba(15, 23, 42, 0.8); 
-        }
-        .status-badge { 
-            padding: 2px 8px; 
-            border-radius: 12px; 
-            font-size: 12px; 
-            font-weight: 500; 
-        }
-        .status-pending { 
-            background-color: #fffbeb; 
-            color: #b45309; 
-        }
-        .dark .status-pending { 
-            background-color: #431407; 
-            color: #fed7aa; 
-        }
-        .status-approved { 
-            background-color: #dcfce7; 
-            color: #16a34a; 
-        }
-        .dark .status-approved { 
-            background-color: #052e16; 
-            color: #34d747; 
-        }
-        .status-rejected { 
-            background-color: #fee2e2; 
-            color: #dc2626; 
-        }
-        .dark .status-rejected { 
-            background-color: #450a0a; 
-            color: #fca5a5; 
-        }
-        .copy-btn {
-            background: #1e40af;
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
             color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 4px 8px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: all 0.2s;
+            letter-spacing: 1px;
         }
-        .copy-btn:hover {
-            background: #1d4ed8;
+
+        a {
+            text-decoration: none;
+            color: var(--sand);
+            transition: var(--transition);
         }
-        .copy-btn.copied {
-            background: #16a34a;
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .file-upload-area {
-            border: 2px dashed #cbd5e1;
-            border-radius: 8px;
-            padding: 40px 20px;
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
             text-align: center;
-            transition: all 0.3s ease;
+            margin-bottom: 60px;
+            position: relative;
+            font-size: 2.5rem;
         }
-        .file-upload-area:hover {
-            background-color: #f8fafc;
-            border-color: #1e40af;
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--olive), transparent);
         }
-        .file-upload-area.drag-over {
-            background-color: #e0f2fe;
-            border-color: #1e40af;
-        }
-        .file-preview {
-            max-height: 300px;
+
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            background: var(--olive);
+            color: white;
+            font-weight: 600;
+            border: 2px solid var(--sand);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: var(--transition);
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            position: relative;
             overflow: hidden;
-            border-radius: 8px;
-            background: #000;
-            margin: 15px 0;
+            z-index: 1;
         }
-        .file-progress {
-            height: 8px;
-            background-color: #e2e8f0;
-            border-radius: 4px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-        .file-progress-bar {
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
             height: 100%;
-            background-color: #16a34a;
-            width: 0%;
-            transition: width 0.3s ease;
+            background: var(--dark-olive);
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        /* ===== Header & Nav ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(28,28,28,0.97);
+            backdrop-filter: blur(10px);
+            padding: 18px 0;
+            border-bottom: 2px solid var(--olive);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--sand);
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            color: var(--olive);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #c0c0c0;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 1.2px;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sand);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* ===== Hero Section ===== */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(28,28,28,0.7), rgba(28,28,28,0.95)), 
+                        url('https://images.unsplash.com/photo-1579621970795-87facc829a85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,100 100,100 100,95 0,95" fill="%233B4A1C"/></svg>');
+            background-size: 100% 100px;
+            background-repeat: no-repeat;
+            background-position: bottom;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 4.2rem;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            line-height: 1.1;
+        }
+
+        .hero-content h1 span {
+            display: block;
+            font-weight: 300;
+            font-size: 2.4rem;
+            color: var(--sand);
+            letter-spacing: 3px;
+            margin-top: 15px;
+        }
+
+        .hero-content p.tagline {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 45px;
+            color: var(--sand);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            position: relative;
+        }
+
+        .hero-content p.tagline::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--sand);
+        }
+
+        /* ===== Section Styling ===== */
+        .section-bg {
+            background: var(--gray);
+        }
+
+        .section-dark {
+            background: var(--dark-olive);
+        }
+
+        /* ===== About Section ===== */
+        #about {
+            background: linear-gradient(135deg, var(--charcoal), var(--gray));
+        }
+
+        .bio {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .bio-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .bio-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--sand);
+        }
+
+        .bio-text .role {
+            display: inline-block;
+            background: var(--olive);
+            color: white;
+            padding: 5px 15px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .bio-text p {
+            margin-bottom: 20px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .bio-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: var(--sand);
+            font-weight: 600;
+        }
+
+        .bio-img {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        .bio-img::before {
+            content: '';
+            display: block;
+            width: 220px;
+            height: 300px;
+            background: linear-gradient(145deg, var(--olive), var(--dark-olive));
+            margin: 0 auto 25px;
+            border: 4px solid var(--sand);
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .bio-img::after {
+            content: 'OFFICIAL PORTRAIT';
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--sand);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ===== Services/Experience ===== */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .card {
+            background: var(--charcoal);
+            border: 1px solid var(--olive);
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--olive);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--sand);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card i {
+            font-size: 3rem;
+            color: var(--sand);
+            margin-bottom: 25px;
+            display: inline-block;
+            background: rgba(74, 93, 35, 0.15);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+        }
+
+        .card h3 {
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            color: var(--sand);
+        }
+
+        /* ===== Values Section ===== */
+        #values {
+            background: linear-gradient(135deg, var(--dark-olive), #2a3518);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 35px 25px;
+            background: rgba(0,0,0,0.2);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            background: rgba(0,0,0,0.3);
+        }
+
+        .value-item i {
+            font-size: 3.2rem;
+            color: var(--sand);
+            margin-bottom: 25px;
+            display: block;
+            background: rgba(217, 179, 130, 0.1);
+            width: 90px;
+            height: 90px;
+            line-height: 90px;
+            border-radius: 50%;
+        }
+
+        .value-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .value-quote {
+            background: rgba(0,0,0,0.4);
+            padding: 35px;
+            border-left: 4px solid var(--sand);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .value-quote::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(217, 179, 130, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        /* ===== Gallery ===== */
+        #gallery {
+            background: var(--charcoal);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            height: 350px;
+            overflow: hidden;
+            border: 3px solid var(--olive);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            border-color: var(--sand);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(28,28,28,0.85);
+            padding: 15px 20px;
+            color: var(--sand);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+
+        /* ===== Contact ===== */
+        #contact {
+            background: linear-gradient(135deg, var(--gray), #2a2a2a);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 25px;
+            color: var(--sand);
+            font-size: 1.8rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            color: var(--sand);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            min-width: 24px;
+            margin-top: 4px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 25px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(28,28,28,0.7);
+            border: 1px solid var(--olive);
+            color: white;
+            font-size: 1.05rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--sand);
+            box-shadow: 0 0 0 3px rgba(217, 179, 130, 0.2);
+        }
+
+        .contact-form textarea {
+            height: 180px;
+            resize: vertical;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--charcoal);
+            text-align: center;
+            padding: 40px 0 30px;
+            border-top: 2px solid var(--olive);
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #a0a0a0;
+            font-size: 1.2rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--sand);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+            
+            .hero-content h1 span {
+                font-size: 2rem;
+            }
+            
+            .bio {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 75px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 75px);
+                background: var(--charcoal);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.4s;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .bio {
+                flex-direction: column;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.6rem;
+            }
+
+            .hero-content h1 span {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p.tagline {
+                font-size: 1.4rem;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content h1 span {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
-    <div id="app"></div>
-    
-    <div id="whatsapp-button" class="whatsapp-button">
-        <i class="fab fa-whatsapp text-white text-2xl"></i>
-    </div>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">GABY<span>.</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#values">Values</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="hero-content">
+            <h1>CAPTAIN GABY PEREZ<br><span>United States Army</span></h1>
+            <p class="tagline">Strength, Service, and Leadership</p>
+            <a href="#contact" class="btn">Secure Contact</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="bio">
+                <div class="bio-text">
+                    <span class="role">MILITARY OFFICER & INFORMATION TECHNOLOGIST</span>
+                    <h2>Gaby Perez</h2>
+                    <p>A decorated <span class="highlight">Captain in the United States Army</span> with over 10 years of distinguished service across multiple theaters of operation. Currently stationed at Al-Tanf Garrison, Syria, leading critical missions in one of the most complex operational environments.</p>
+                    <p>My leadership philosophy centers on <span class="highlight">resilience, adaptability, and unwavering integrity</span>. I've commanded multinational units in high-stakes peacekeeping operations and combat deployments, earning the respect of allies and personnel through consistent excellence under pressure.</p>
+                    <p>In addition to tactical command responsibilities, I serve as the Garrison's <span class="highlight">Senior Information Management Technologist</span>—overseeing intelligence systems, network infrastructure, and cybersecurity protocols that directly support mission success.</p>
+                </div>
+                <div class="bio-img">
+                    <!-- Official portrait placeholder -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section-bg">
+        <div class="container">
+            <h2 class="section-title">Service & Experience</h2>
+            <div class="cards">
+                <div class="card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Tactical Leadership</h3>
+                    <p>Commanded 120+ personnel in joint coalition operations; led rapid-response units in volatile border zones with zero mission failures.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-dove"></i>
+                    <h3>Peacekeeping Missions</h3>
+                    <p>Deployed to critical stabilization operations in the Sahel & Levant regions; coordinated civil-military cooperation reducing local tensions by 65%.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Strategic Planning</h3>
+                    <p>Developed operational frameworks for force protection, intelligence integration, and resource allocation across 3 major deployments.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-users"></i>
+                    <h3>Team Command</h3>
+                    <p>Trained and mentored 45+ junior officers; implemented leadership development program reducing unit turnover by 40%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="section-dark">
+        <div class="container">
+            <h2 class="section-title">Core Values</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <i class="fas fa-medal"></i>
+                    <h3>Honor</h3>
+                    <p>Moral compass in every decision—on and off the battlefield.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-flag"></i>
+                    <h3>Duty</h3>
+                    <p>Fulfilling obligations with excellence—even in adversity.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-fire"></i>
+                    <h3>Courage</h3>
+                    <p>Physical and moral bravery in the face of uncertainty.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Integrity</h3>
+                    <p>Truthfulness, consistency, and accountability in all actions.</p>
+                </div>
+            </div>
+            <div class="value-quote">
+                "Here in camp, I serve as the Senior Information Management Technologist—monitoring military intelligence, managing classified networks & databases, and implementing hardware/software systems. I deploy with combat teams on special missions, bridging the critical gap between technology and tactical operations."
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">Field Operations</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://files.imagetourl.net/uploads/1767467231542-8b4f53ff-5d7c-4eee-bbd2-08172f769ac5.jpeg" alt="Military Operation">
+                    <div class="gallery-caption">Joint Patrol - Northern Syria</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://files.imagetourl.net/uploads/1767467297128-f4ebfd60-a6ae-4ccc-ba8e-09b1b7d49ba7.jpeg" alt="Team Briefing">
+                    <div class="gallery-caption">Mission Briefing - Al-Tanf</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://files.imagetourl.net/uploads/1767471696549-bb0d3d36-81d2-4eec-9ef2-25b1ba244a7f.jpeg" alt="Desert Patrol">
+                    <div class="gallery-caption">Desert Patrol - Eastern Syria</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://files.imagetourl.net/uploads/1767471865438-e64d501f-ddc2-48a8-8f35-7b0da16c50cf.jpeg" alt="Command Center">
+                    <div class="gallery-caption">Tactical Operations Center</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-bg">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Secure Communications</h3>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:gabyperez0123@gmail.com">gabyperez0123@gmail.com</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Al-Tanf Garrison, Syria</p>
+                    <p><i class="fas fa-shield-alt"></i> <strong>Clearance:</strong> TS/SCI with CI Polygraph</p>
+                    <p><i class="fas fa-clock"></i> <strong>Response Time:</strong> 24-72 hours (due to operational tempo)</p>
+                    <p style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(217,179,130,0.2);">
+                        <em>Note: All communications are screened per OPSEC protocols. For urgent matters, include "PRIORITY" in subject line.</em>
+                    </p>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="affiliation" placeholder="Your Affiliation (Optional)">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Your Secure Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Encrypted Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2026 Captain Gaby Perez | United States Army</p>
+            <p style="margin-top:10px; color:#777; font-size:0.9rem;">This portfolio represents the professional credentials of a real military officer. All imagery and operational details are authentic to the extent permitted by security protocols.</p>
+        </div>
+    </footer>
 
     <script>
-        // Local storage data structure
-        const initialData = {
-            users: [
-                {
-                    id: 1,
-                    name: 'Admin User',
-                    email: 'miracleekeoha07@outlook.com',
-                    phone: '08031234567',
-                    password: '09026852685',
-                    is_admin: true,
-                    subscription_status: 'active',
-                    subscription_expiry: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-                    created_at: new Date().toISOString()
-                },
-                {
-                    id: 2,
-                    name: 'Demo User',
-                    email: 'user@example.com',
-                    phone: '07069876543',
-                    password: 'password123',
-                    is_admin: false,
-                    subscription_status: 'active',
-                    subscription_expiry: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-                    created_at: new Date().toISOString()
-                }
-            ],
-            courses: [
-                {
-                    id: 1,
-                    title: 'HTML Fundamentals',
-                    description: 'Learn the basics of HTML to create your first website',
-                    price: 25000,
-                    video_url: 'https://storage.googleapis.com/gweb-unibrow-prod/assets/learning/101/101-1.mp4',
-                    created_at: new Date().toISOString()
-                },
-                {
-                    id: 2,
-                    title: 'PHP Backend',
-                    description: 'Create dynamic websites with PHP and MySQL',
-                    price: 25000,
-                    video_url: 'https://storage.googleapis.com/gweb-unibrow-prod/assets/learning/101/101-2.mp4',
-                    created_at: new Date().toISOString()
-                },
-                {
-                    id: 3,
-                    title: 'JavaScript Mastery',
-                    description: 'Create interactive websites with modern JavaScript',
-                    price: 25000,
-                    video_url: 'https://storage.googleapis.com/gweb-unibrow-prod/assets/learning/101/101-3.mp4',
-                    created_at: new Date().toISOString()
-                }
-            ],
-            payments: [],
-            videos: []
-        };
-
-        // Initialize local storage if not exists
-        if (!localStorage.getItem('naijaData')) {
-            localStorage.setItem('naijaData', JSON.stringify(initialData));
-        }
-
-        // Get data from local storage
-        function getData() {
-            return JSON.parse(localStorage.getItem('naijaData') || JSON.stringify(initialData));
-        }
-
-        // Save data to local storage
-        function saveData(data) {
-            localStorage.setItem('naijaData', JSON.stringify(data));
-        }
-
-        // Session management
-        let session = {
-            user_id: null,
-            user_name: '',
-            user_email: '',
-            is_admin: false,
-            subscription_status: 'pending',
-            subscription_expiry: null
-        };
-
-        // Check if logged in
-        function is_logged_in() {
-            return session.user_id !== null;
-        }
-
-        // Check if admin
-        function is_admin() {
-            return session.is_admin;
-        }
-
-        // Login function
-        function login(email, password) {
-            const data = getData();
-            const user = data.users.find(u => u.email === email && u.password === password);
-            
-            if (user) {
-                session = {
-                    user_id: user.id,
-                    user_name: user.name,
-                    user_email: user.email,
-                    is_admin: user.is_admin,
-                    subscription_status: user.subscription_status,
-                    subscription_expiry: user.subscription_expiry
-                };
-                return true;
-            }
-            return false;
-        }
-
-        // Register user
-        function register_user(name, email, phone, password) {
-            const data = getData();
-            
-            // Check if email exists
-            if (data.users.some(u => u.email === email)) {
-                return false;
-            }
-            
-            const newUser = {
-                id: data.users.length + 1,
-                name: name,
-                email: email,
-                phone: phone,
-                password: password,
-                is_admin: false,
-                subscription_status: 'pending',
-                subscription_expiry: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-                created_at: new Date().toISOString()
-            };
-            
-            data.users.push(newUser);
-            saveData(data);
-            
-            session = {
-                user_id: newUser.id,
-                user_name: newUser.name,
-                user_email: newUser.email,
-                is_admin: newUser.is_admin,
-                subscription_status: newUser.subscription_status,
-                subscription_expiry: newUser.subscription_expiry
-            };
-            
-            return true;
-        }
-
-        // Check subscription status
-        function check_subscription_status() {
-            if (!is_logged_in()) return false;
-            
-            const data = getData();
-            const user = data.users.find(u => u.id === session.user_id);
-            
-            if (user && user.subscription_status === 'active') {
-                const expiryDate = new Date(user.subscription_expiry);
-                const now = new Date();
-                
-                if (expiryDate < now) {
-                    user.subscription_status = 'expired';
-                    saveData(data);
-                    session.subscription_status = 'expired';
-                    return false;
-                }
-                return true;
-            }
-            return false;
-        }
-
-        // Logout function
-        function logout() {
-            session = {
-                user_id: null,
-                user_name: '',
-                user_email: '',
-                is_admin: false,
-                subscription_status: 'pending',
-                subscription_expiry: null
-            };
-            renderPage('home');
-        }
-
-        // Add payment
-        function add_payment(user_id, amount, proof) {
-            const data = getData();
-            const newPayment = {
-                id: data.payments.length + 1,
-                user_id: user_id,
-                amount: amount,
-                proof: proof,
-                status: 'pending',
-                created_at: new Date().toISOString()
-            };
-            
-            data.payments.push(newPayment);
-            saveData(data);
-            return newPayment.id;
-        }
-
-        // Approve payment
-        function approve_payment(payment_id) {
-            const data = getData();
-            const payment = data.payments.find(p => p.id === payment_id && p.status === 'pending');
-            
-            if (payment) {
-                payment.status = 'approved';
-                
-                // Update user subscription
-                const user = data.users.find(u => u.id === payment.user_id);
-                if (user) {
-                    user.subscription_status = 'active';
-                    user.subscription_expiry = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-                    session.subscription_status = 'active';
-                    session.subscription_expiry = user.subscription_expiry;
-                }
-                
-                saveData(data);
-                return true;
-            }
-            return false;
-        }
-
-        // Get pending payments
-        function get_pending_payments() {
-            const data = getData();
-            const pending = [];
-            
-            data.payments.forEach(payment => {
-                if (payment.status === 'pending') {
-                    const user = data.users.find(u => u.id === payment.user_id);
-                    if (user) {
-                        pending.push({
-                            ...payment,
-                            user_name: user.name,
-                            user_email: user.email
-                        });
-                    }
-                }
-            });
-            
-            return pending.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-        }
-
-        // Toggle theme
-        let darkMode = localStorage.getItem('darkMode') === 'true';
-        if (darkMode) {
-            document.documentElement.classList.add('dark');
-        }
-
-        function toggleTheme() {
-            darkMode = !darkMode;
-            localStorage.setItem('darkMode', darkMode);
-            if (darkMode) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        }
-
-        // Routing
-        let currentPage = 'home';
-        let error = '';
-        let success = '';
-
-        function navigate(page) {
-            currentPage = page;
-            renderPage(page);
-        }
-
-        // Render functions
-        function renderPage(page) {
-            const app = document.getElementById('app');
-            
-            // Check authentication for protected pages
-            const protectedPages = ['dashboard', 'admin'];
-            if (protectedPages.includes(page) && !is_logged_in()) {
-                navigate('login');
-                return;
-            }
-            
-            if (page === 'home') {
-                renderHomePage(app);
-            } else if (page === 'login') {
-                renderLoginPage(app);
-            } else if (page === 'signup') {
-                renderSignupPage(app);
-            } else if (page === 'dashboard' && is_logged_in()) {
-                renderDashboardPage(app);
-            } else if (page === 'admin' && is_admin()) {
-                renderAdminPage(app);
-            } else if (page === 'logout') {
-                logout();
-            } else {
-                // Redirect to login if accessing protected page without authentication
-                if (protectedPages.includes(page)) {
-                    navigate('login');
-                } else {
-                    renderHomePage(app);
-                }
-            }
-        }
-
-        function renderHomePage(app) {
-            const data = getData();
-            const courses = data.courses;
-            
-            app.innerHTML = `
-            <header class="bg-white dark:bg-gray-800 shadow">
-                <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-                    <div class="flex items-center space-x-2">
-                        <div class="bg-indigo-600 w-10 h-10 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-play text-white"></i>
-                        </div>
-                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">NaijaCodeAcademy</h1>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <button onclick="navigate('signup')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition">Sign Up</button>
-                        <button onclick="navigate('login')" class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 px-4 py-2 rounded-lg transition">Login</button>
-                        <button onclick="toggleTheme()" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600">
-                            <i class="fas fa-${darkMode ? 'sun' : 'moon'} text-gray-800 dark:text-gray-200"></i>
-                        </button>
-                    </div>
-                </div>
-            </header>
-
-            <section class="py-12 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="text-4xl font-bold mb-4">Learn Web Development the Nigerian Way</h1>
-                    <p class="text-xl mb-8">Affordable, practical courses to build real websites. Pay in Naira, learn at your own pace.</p>
-                    
-                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-6 max-w-2xl mx-auto">
-                        <div class="flex items-center justify-center mb-4">
-                            <i class="fas fa-credit-card mr-3 text-2xl"></i>
-                            <span class="text-2xl font-bold">Manual Payment Method</span>
-                        </div>
-                        <p class="text-center text-lg">
-                            <span class="font-semibold">Account Number:</span> 8034848106<br>
-                            <span class="font-semibold">Bank:</span> Moniepoint<br>
-                            <span class="font-semibold">Account Name:</span> Aignwa Eugene Ekeoha
-                        </p>
-                        <p class="mt-3 text-center text-sm opacity-90">
-                            After payment, upload proof and we'll verify & credit your wallet within 24 hours
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="py-12 px-4 bg-gray-100 dark:bg-gray-800">
-                <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Available Courses</h2>
-                        <p class="text-gray-600 dark:text-gray-300 mt-4">Learn at your own pace with our practical courses</p>
-                        <div class="mt-4 inline-block bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 px-3 py-1 rounded-full text-sm">
-                            Subscription: <span class="font-bold">₦25,000/month</span>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        ${courses.map(course => `
-                        <div class="course-card bg-white dark:bg-gray-800">
-                            <div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                                <span class="text-gray-500 dark:text-gray-400">${course.title}</span>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-xl mb-2">${course.title}</h3>
-                                <p class="text-gray-600 dark:text-gray-300 mb-4">${course.description}</p>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">₦${numberWithCommas(course.price)}</span>
-                                    <button onclick="navigate('signup')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg flex items-center">
-                                        <i class="fas fa-user-plus mr-1"></i>
-                                        Sign Up
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        `).join('')}
-                    </div>
-                </div>
-            </section>
-
-            <footer class="bg-gray-900 text-gray-400 py-12 px-4 mt-12">
-                <div class="max-w-6xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                        <div>
-                            <div class="flex items-center space-x-2 mb-4">
-                                <i class="fas fa-play text-white text-xl"></i>
-                                <span class="text-xl font-bold text-white">NaijaCodeAcademy</span>
-                            </div>
-                            <p class="mb-4">
-                                Empowering Nigerians with affordable web development skills.
-                            </p>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-semibold mb-4">Support</h3>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fas fa-phone mr-2"></i>
-                                    <span>WhatsApp: +234 907 600 4075</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-envelope mr-2"></i>
-                                    <span>support@naijacodeacademy.ng</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-semibold mb-4">Subscription</h3>
-                            <ul class="space-y-1">
-                                <li>₦25,000 monthly</li>
-                                <li>Access to all courses</li>
-                                <li>Download videos for offline viewing</li>
-                                <li>Certificate of completion</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-semibold mb-4">Quick Links</h3>
-                            <ul class="space-y-2">
-                                <li><button onclick="navigate('signup')" class="hover:text-white transition">Sign Up</button></li>
-                                <li><button onclick="navigate('login')" class="hover:text-white transition">Login</button></li>
-                                <li><a href="#" class="hover:text-white transition">Courses</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="border-t border-gray-800 mt-8 pt-6 text-center text-sm">
-                        <p>© ${new Date().getFullYear()} NaijaCodeAcademy. All rights reserved.</p>
-                    </div>
-                </div>
-            </footer>
-            `;
-        }
-
-        function renderLoginPage(app) {
-            app.innerHTML = `
-            <div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-                <div class="w-full max-w-md px-4">
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
-                        <div class="p-1 bg-gradient-to-r from-indigo-600 to-purple-600"></div>
-                        <div class="p-6">
-                            <div class="text-center mb-8">
-                                <div class="mx-auto bg-indigo-600 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-                                    <i class="fas fa-play text-white text-xl"></i>
-                                </div>
-                                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Login to NaijaCodeAcademy</h1>
-                                <p class="text-gray-600 dark:text-gray-300 mt-2">Access your courses and learning dashboard</p>
-                            </div>
-                            
-                            ${error ? `<div class="mb-4 p-3 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-lg">${error}</div>` : ''}
-                            
-                            <form onsubmit="handleLogin(event)">
-                                <div class="mb-4">
-                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2" for="email">
-                                        Email Address
-                                    </label>
-                                    <div class="relative">
-                                        <i class="fas fa-envelope absolute left-3 top-3 text-gray-400"></i>
-                                        <input id="email" name="email" type="email" required class="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="yourname@example.com">
-                                    </div>
-                                </div>
-                                
-                                <div class="mb-6">
-                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2" for="password">
-                                        Password
-                                    </label>
-                                    <div class="relative">
-                                        <i class="fas fa-lock absolute left-3 top-3 text-gray-400"></i>
-                                        <input id="password" name="password" type="password" required class="w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="••••••••">
-                                        <button type="button" onclick="togglePasswordVisibility('password')" class="absolute right-3 top-3 text-gray-400">
-                                            <i class="fas fa-eye" id="password-icon"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg font-medium transition">
-                                    Login to Continue
-                                </button>
-                                
-                                <div class="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
-                                    <p>Don't have an account? <button onclick="navigate('signup')" class="text-indigo-600 font-medium">Sign up here</button></p>
-                                    <p class="mt-2">Admin access: Use provided credentials</p>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <footer class="bg-gray-900 text-gray-400 py-6 px-4">
-                <div class="max-w-6xl mx-auto text-center">
-                    <p>© ${new Date().getFullYear()} NaijaCodeAcademy. All rights reserved.</p>
-                </div>
-            </footer>
-            `;
-        }
-
-        function renderSignupPage(app) {
-            app.innerHTML = `
-            <div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-                <div class="w-full max-w-md px-4">
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
-                        <div class="p-1 bg-gradient-to-r from-indigo-600 to-purple-600"></div>
-                        <div class="p-6">
-                            <div class="text-center mb-8">
-                                <div class="mx-auto bg-indigo-600 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-                                    <i class="fas fa-play text-white text-xl"></i>
-                                </div>
-                                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Create Your Account</h1>
-                                <p class="text-gray-600 dark:text-gray-300 mt-2">Sign up to access all our courses</p>
-                            </div>
-                            
-                            ${error ? `<div class="mb-4 p-3 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-lg">${error}</div>` : ''}
-                            
-                            <form onsubmit="handleSignup(event)">
-                                <div class="mb-2">
-                                    <input name="name" type="text" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700" placeholder="Full Name">
-                                </div>
-                                <div class="mb-2">
-                                    <input name="email" type="email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700" placeholder="Email">
-                                </div>
-                                <div class="mb-2">
-                                    <input name="phone" type="tel" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700" placeholder="Phone (0803...)">
-                                </div>
-                                <div class="mb-2">
-                                    <input name="password" type="password" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700" placeholder="Password">
-                                </div>
-                                <div class="mb-4">
-                                    <input name="confirm_password" type="password" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700" placeholder="Confirm Password">
-                                </div>
-                                
-                                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg font-medium transition">
-                                    Create Account
-                                </button>
-                                
-                                <div class="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
-                                    <p>Already have an account? <button onclick="navigate('login')" class="text-indigo-600 font-medium">Login here</button></p>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <footer class="bg-gray-900 text-gray-400 py-6 px-4">
-                <div class="max-w-6xl mx-auto text-center">
-                    <p>© ${new Date().getFullYear()} NaijaCodeAcademy. All rights reserved.</p>
-                </div>
-            </footer>
-            `;
-        }
-
-        function renderDashboardPage(app) {
-            const isSubscribed = check_subscription_status();
-            const expiryDate = session.subscription_expiry ? new Date(session.subscription_expiry).toLocaleDateString() : 'N/A';
-            
-            app.innerHTML = `
-            <header class="bg-white dark:bg-gray-800 shadow">
-                <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-                    <div class="flex items-center space-x-2">
-                        <div class="bg-indigo-600 w-10 h-10 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-play text-white"></i>
-                        </div>
-                        <h1 class="text-xl font-bold">NaijaCodeAcademy</h1>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="flex items-center bg-indigo-50 dark:bg-gray-700 px-3 py-1 rounded-lg">
-                            <i class="fas fa-wallet text-indigo-600 dark:text-indigo-400 mr-1"></i>
-                            <span class="font-semibold">
-                                ${isSubscribed ? 'Active Subscription' : 'No Active Subscription'}
-                            </span>
-                        </div>
-                        <button onclick="toggleTheme()" class="p-1 rounded-lg bg-gray-200 dark:bg-gray-700">
-                            <i class="fas fa-${darkMode ? 'sun' : 'moon'}"></i>
-                        </button>
-                        <button onclick="logout()" class="bg-gray-200 dark:bg-gray-700 p-1 rounded-lg">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </button>
-                    </div>
-                </div>
-            </header>
-
-            <section class="py-8 px-4">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="text-3xl font-bold mb-4">Welcome, ${session.user_name}</h1>
-                    <p class="text-lg mb-6">All courses included in your monthly subscription. Pay once, learn everything.</p>
-                    
-                    ${!isSubscribed ? `
-                    <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl p-6 max-w-2xl mx-auto">
-                        <div class="flex items-center justify-center mb-3">
-                            <i class="fas fa-crown mr-3"></i>
-                            <span class="text-xl font-bold">Premium Subscription</span>
-                        </div>
-                        <p class="text-3xl font-bold">₦25,000</p>
-                        <p class="mt-2">Monthly access to all courses • New content added weekly</p>
-                        <p class="mt-2 text-sm opacity-90">
-                            Upload payment proof to activate your subscription
-                        </p>
-                        <form onsubmit="handlePayment(event)" class="mt-4">
-                            <button type="submit" class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-bold hover:bg-gray-100 transition">
-                                <i class="fas fa-upload mr-1"></i> Upload Payment Proof
-                            </button>
-                        </form>
-                    </div>
-                    ` : ''}
-                </div>
-            </section>
-
-            ${isSubscribed ? `
-            <section class="py-8 px-4">
-                <div class="max-w-6xl mx-auto">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-bold">All Courses</h2>
-                        <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm">
-                            Full Access Included
-                        </span>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        ${getData().courses.map(course => `
-                        <div class="course-card bg-white dark:bg-gray-800">
-                            <div class="h-40 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                                <span class="text-gray-500 dark:text-gray-400">${course.title}</span>
-                            </div>
-                            <div class="p-4">
-                                <span class="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded">Frontend</span>
-                                <h3 class="font-bold text-lg mt-2">${course.title}</h3>
-                                <p class="text-gray-600 dark:text-gray-300 mt-2">${course.description}</p>
-                                <div class="mt-4">
-                                    <button onclick="playVideo('${course.video_url}', '${course.title}')" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg flex items-center justify-center">
-                                        <i class="fas fa-play mr-1"></i> Start Learning
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        `).join('')}
-                    </div>
-                </div>
-            </section>
-            ` : ''}
-            
-            <!-- Payment Information Section -->
-            <section class="py-8 px-4 bg-gray-50 dark:bg-gray-800">
-                <div class="max-w-4xl mx-auto">
-                    <div class="bg-white dark:bg-gray-700 rounded-xl p-6">
-                        <h2 class="text-2xl font-bold mb-4">Manual Payment Method</h2>
-                        <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
-                            <div class="flex items-center justify-center mb-4">
-                                <i class="fas fa-credit-card text-2xl mr-3"></i>
-                                <span class="text-xl font-bold">Payment Instructions</span>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg">
-                                    <p class="font-semibold mb-2">Account Number:</p>
-                                    <div class="flex items-center">
-                                        <span id="account-number" class="text-lg">8034848106</span>
-                                        <button id="copy-account" class="copy-btn ml-2">Copy</button>
-                                    </div>
-                                </div>
-                                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg">
-                                    <p class="font-semibold mb-2">Account Details:</p>
-                                    <p>Bank: Moniepoint</p>
-                                    <p>Account Name: Aignwa Eugene Ekeoha</p>
-                                </div>
-                            </div>
-                            <div class="mt-4 text-center text-sm opacity-90">
-                                After payment, upload proof and we'll verify & credit your wallet within 24 hours
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <footer class="bg-gray-900 text-gray-400 py-8 px-4 mt-12">
-                <div class="max-w-6xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div>
-                            <div class="flex items-center space-x-2 mb-4">
-                                <i class="fas fa-play text-white"></i>
-                                <span class="text-xl font-bold text-white">NaijaCodeAcademy</span>
-                            </div>
-                            <p>Empowering Nigerians with affordable web development skills.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-semibold mb-4">Support</h3>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fas fa-phone mr-2"></i>
-                                    <span>WhatsApp: +234 907 600 4075</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-envelope mr-2"></i>
-                                    <span>support@naijacodeacademy.ng</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-semibold mb-4">Subscription</h3>
-                            <ul class="space-y-1">
-                                <li>₦25,000 monthly</li>
-                                <li>Access to all courses</li>
-                                <li>Download videos for offline viewing</li>
-                                <li>Certificate of completion</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="border-t border-gray-800 mt-8 pt-6 text-center text-sm">
-                        <p>© ${new Date().getFullYear()} NaijaCodeAcademy. All rights reserved.</p>
-                        <p class="mt-2">Next billing date: ${expiryDate}</p>
-                    </div>
-                </div>
-            </footer>
-            `;
-            
-            // Add copy button functionality
-            setTimeout(() => {
-                if (document.getElementById('copy-account')) {
-                    document.getElementById('copy-account').addEventListener('click', function() {
-                        const accountNumber = document.getElementById('account-number').textContent;
-                        navigator.clipboard.writeText(accountNumber)
-                            .then(() => {
-                                const originalText = this.textContent;
-                                this.textContent = 'Copied!';
-                                setTimeout(() => {
-                                    this.textContent = originalText;
-                                }, 2000);
-                            })
-                            .catch(err => {
-                                console.error('Failed to copy: ', err);
-                            });
-                    });
-                }
-            }, 100);
-        }
-
-        function renderAdminPage(app) {
-            const data = getData();
-            const pendingPayments = get_pending_payments();
-            const courses = data.courses;
-            const users = data.users;
-            
-            app.innerHTML = `
-            <header class="bg-white dark:bg-gray-800 shadow">
-                <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-                    <div class="flex items-center space-x-2">
-                        <i class="fas fa-cog text-indigo-600 text-2xl"></i>
-                        <h1 class="text-xl font-bold">Admin Dashboard</h1>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <button onclick="toggleTheme()" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600">
-                            <i class="fas fa-${darkMode ? 'sun' : 'moon'}"></i>
-                        </button>
-                        <button onclick="logout()" class="bg-red-600 text-white px-4 py-2 rounded-lg">
-                            Logout
-                        </button>
-                    </div>
-                </div>
-            </header>
-
-            <div class="max-w-7xl mx-auto px-4 py-6">
-                ${success ? `<div class="mb-4 p-3 bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-lg">${success}</div>` : ''}
-                ${error ? `<div class="mb-4 p-3 bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-lg">${error}</div>` : ''}
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                        <div class="flex items-center">
-                            <i class="fas fa-users text-blue-500 mr-2"></i>
-                            <div>
-                                <p class="text-gray-500 dark:text-gray-400">Total Users</p>
-                                <p class="text-2xl font-bold">${users.length}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                        <div class="flex items-center">
-                            <i class="fas fa-hand-holding-usd text-green-500 mr-2"></i>
-                            <div>
-                                <p class="text-gray-500 dark:text-gray-400">Pending Payments</p>
-                                <p class="text-2xl font-bold">${pendingPayments.length}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                        <div class="flex items-center">
-                            <i class="fas fa-video text-purple-500 mr-2"></i>
-                            <div>
-                                <p class="text-gray-500 dark:text-gray-400">Total Courses</p>
-                                <p class="text-2xl font-bold">${courses.length}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                        <div class="flex items-center">
-                            <i class="fas fa-wallet text-amber-500 mr-2"></i>
-                            <div>
-                                <p class="text-gray-500 dark:text-gray-400">Monthly Revenue</p>
-                                <p class="text-2xl font-bold">₦0</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow">
-                        <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-                            <h2 class="text-lg font-bold">Payment Approvals</h2>
-                        </div>
-                        <div class="p-4">
-                            <div class="mb-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                                <h3 class="font-bold mb-2">Manual Payment Instructions</h3>
-                                <p>• Account: 8034848106</p>
-                                <p>• Bank: Moniepoint</p>
-                                <p>• Name: Aignwa Eugene Ekeoha</p>
-                                <p class="mt-2 font-semibold">Amount: ₦25,000 per month</p>
-                            </div>
-                            
-                            <div class="overflow-x-auto">
-                                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                                    <thead class="bg-gray-50 dark:bg-gray-700">
-                                        <tr>
-                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">User</th>
-                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Amount</th>
-                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Date</th>
-                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
-                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                                        ${pendingPayments.length === 0 ? `
-                                        <tr>
-                                            <td colspan="5" class="px-4 py-4 text-center text-gray-500 dark:text-gray-400">No pending payments</td>
-                                        </tr>
-                                        ` : pendingPayments.map(payment => `
-                                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
-                                            <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">${payment.user_name}</td>
-                                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">₦${numberWithCommas(payment.amount)}</td>
-                                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${new Date(payment.created_at).toLocaleDateString()}</td>
-                                            <td class="px-4 py-4 whitespace-nowrap"><span class="status-badge status-pending">Pending</span></td>
-                                            <td class="px-4 py-4 whitespace-nowrap text-sm font-medium">
-                                                <form onsubmit="handleApprovePayment(event)" class="flex space-x-2">
-                                                    <input type="hidden" name="payment_id" value="${payment.id}">
-                                                    <button type="submit" class="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300">
-                                                        <i class="fas fa-check-circle"></i>
-                                                    </button>
-                                                    <button type="button" class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300" onclick="rejectPayment(${payment.id})">
-                                                        <i class="fas fa-times-circle"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        `).join('')}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow">
-                        <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-                            <h2 class="text-lg font-bold">Course Management</h2>
-                        </div>
-                        <div class="p-4">
-                            <div class="mb-4">
-                                <label class="block mb-2">Select Course to Upload Video</label>
-                                <select id="course-select" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg mb-2 bg-white dark:bg-gray-700">
-                                    <option>Select a course</option>
-                                    ${courses.map(course => `<option value="${course.id}">${course.title}</option>`).join('')}
-                                </select>
-                            </div>
-                            
-                            <div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-8 text-center mb-4">
-                                <i class="fas fa-cloud-upload-alt text-3xl mb-3 text-indigo-600"></i>
-                                <p class="mb-2">Drag and drop your video file here</p>
-                                <p class="text-sm text-gray-500 mb-4">Or click to browse</p>
-                                <div class="bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 px-4 py-2 rounded-lg inline-block">
-                                    <i class="fas fa-folder-open mr-2"></i> Choose File
-                                </div>
-                            </div>
-                            
-                            <form onsubmit="handleUploadVideo(event)">
-                                <div class="mb-2">
-                                    <input name="course_id" type="hidden" id="hidden-course-id" value="1">
-                                    <input name="video_title" type="text" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700" placeholder="Video Title">
-                                </div>
-                                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">
-                                    Upload Video
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            `;
-            
-            // Add event listener for course selection
-            document.getElementById('course-select').addEventListener('change', function() {
-                document.getElementById('hidden-course-id').value = this.value;
-            });
-        }
-
-        function renderRedirectPage(app) {
-            app.innerHTML = `
-            <div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-                <div class="text-center">
-                    <div class="mx-auto bg-indigo-600 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-play text-white text-xl"></i>
-                    </div>
-                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Please Login to Continue</h1>
-                    <button onclick="navigate('login')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition">
-                        Go to Login Page
-                    </button>
-                </div>
-            </div>
-            `;
-        }
-
-        // Helper functions
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-
-        // Form handlers
-        function handleLogin(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            if (login(email, password)) {
-                navigate('dashboard');
-            } else {
-                error = 'Invalid email or password';
-                renderPage('login');
-            }
-        }
-
-        function handleSignup(event) {
-            event.preventDefault();
-            const name = document.querySelector('input[name="name"]').value;
-            const email = document.querySelector('input[name="email"]').value;
-            const phone = document.querySelector('input[name="phone"]').value;
-            const password = document.querySelector('input[name="password"]').value;
-            const confirmPassword = document.querySelector('input[name="confirm_password"]').value;
-            
-            error = '';
-            
-            if (password !== confirmPassword) {
-                error = 'Passwords do not match';
-                renderPage('signup');
-                return;
-            }
-            
-            if (password.length < 6) {
-                error = 'Password must be at least 6 characters';
-                renderPage('signup');
-                return;
-            }
-            
-            if (register_user(name, email, phone, password)) {
-                navigate('dashboard');
-            } else {
-                error = 'Email already exists or registration failed';
-                renderPage('signup');
-            }
-        }
-
-        function handlePayment(event) {
-            event.preventDefault();
-            if (is_logged_in()) {
-                const amount = 25000;
-                const proof = 'proof_' + Date.now() + '.jpg';
-                const paymentId = add_payment(session.user_id, amount, proof);
-                success = 'Payment proof submitted! Admin will verify within 24 hours.';
-                renderPage('dashboard');
-            } else {
-                error = 'You must be logged in to make payments';
-                renderPage('dashboard');
-            }
-        }
-
-        function handleApprovePayment(event) {
-            event.preventDefault();
-            const paymentId = event.target.querySelector('input[name="payment_id"]').value;
-            
-            if (approve_payment(parseInt(paymentId))) {
-                success = 'Payment approved successfully!';
-                renderPage('admin');
-            } else {
-                error = 'Failed to approve payment';
-                renderPage('admin');
-            }
-        }
-
-        function rejectPayment(paymentId) {
-            if (confirm('Are you sure you want to reject this payment?')) {
-                const data = getData();
-                const paymentIndex = data.payments.findIndex(p => p.id === paymentId);
-                
-                if (paymentIndex !== -1) {
-                    data.payments[paymentIndex].status = 'rejected';
-                    saveData(data);
-                    success = 'Payment rejected successfully!';
-                    renderPage('admin');
-                }
-            }
-        }
-
-        function handleUploadVideo(event) {
-            event.preventDefault();
-            const courseId = document.getElementById('hidden-course-id').value;
-            const videoTitle = document.querySelector('input[name="video_title"]').value;
-            
-            // In a real app, we'd handle actual file uploads
-            success = 'Video uploaded successfully!';
-            renderPage('admin');
-        }
-
-        function togglePasswordVisibility(inputId) {
-            const input = document.getElementById(inputId);
-            const icon = document.getElementById('password-icon');
-            
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                input.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        }
-
-        function playVideo(videoUrl, title) {
-            const modal = document.createElement('div');
-            modal.className = 'modal';
-            modal.innerHTML = `
-                <div class="bg-white dark:bg-gray-800 rounded-xl w-full max-w-4xl max-h-[90vh]">
-                    <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                        <h3 class="text-lg font-bold">${title}</h3>
-                        <button id="close-video" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <div class="p-4">
-                        <div class="video-container">
-                            <video controls class="w-full h-full">
-                                <source src="${videoUrl}" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(modal);
-            
-            document.getElementById('close-video').addEventListener('click', function() {
-                document.body.removeChild(modal);
-            });
-        }
-
-        // WhatsApp button
-        document.getElementById('whatsapp-button').addEventListener('click', function() {
-            window.open('https://wa.me/2349076004075', '_blank');
+        // Mobile menu toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.innerHTML = document.querySelector('.nav-links').classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
 
-        // Initialize the app
-        renderPage(currentPage);
+        // Smooth scrolling with offset for fixed header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                    document.querySelector('.mobile-toggle').innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Create mailto link with pre-filled fields
+            const subject = encodeURIComponent("Secure Message from Portfolio - " + name);
+            const body = encodeURIComponent(
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Affiliation: ${document.getElementById('affiliation').value || 'Not provided'}\n\n` +
+                `Message:\n${message}`
+            );
+            
+            // Open email client
+            window.location.href = `mailto:gabyperez0123@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Show success message
+            alert('Secure message template prepared. Please review and send via your email client.');
+        });
+
+        // Add scroll animation for elements
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections
+        document.querySelectorAll('section, .card, .value-item, .gallery-item').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
     </script>
+
 </body>
 </html>
 
